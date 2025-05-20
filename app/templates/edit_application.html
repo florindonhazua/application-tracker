@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Application: {{ application.company_name }} - {{ application.role }}{% endblock %}
+
+{% block content %}
+<div class="mb-8 p-6 bg-white rounded-lg shadow-lg">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-semibold text-sky-700">Edit Job Application</h2>
+        <a href="{{ url_for('read_application_detail', application_id=application.id) }}" 
+           class="text-sky-600 hover:text-sky-700 transition-colors py-2 px-3 border border-sky-600 rounded-md hover:bg-sky-50 text-sm">
+           &larr; Back to Details
+        </a>
+    </div>
+
+    <form action="{{ url_for('update_application_submit', application_id=application.id) }}" method="post" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="company_name" class="block text-sm font-medium text-slate-700">Company Name <span class="text-red-500">*</span></label>
+                <input type="text" id="company_name" name="company_name" required value="{{ application.company_name or '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="role" class="block text-sm font-medium text-slate-700">Role <span class="text-red-500">*</span></label>
+                <input type="text" id="role" name="role" required value="{{ application.role or '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="application_date" class="block text-sm font-medium text-slate-700">Application Date</label>
+                <input type="date" id="application_date" name="application_date" value="{{ application.application_date.strftime('%Y-%m-%d') if application.application_date else '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="status" class="block text-sm font-medium text-slate-700">Status</label>
+                <input type="text" id="status" name="status" value="{{ application.status or '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="contact_person" class="block text-sm font-medium text-slate-700">Contact Person</label>
+                <input type="text" id="contact_person" name="contact_person" value="{{ application.contact_person or '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="phone" class="block text-sm font-medium text-slate-700">Phone</label>
+                <input type="tel" id="phone" name="phone" value="{{ application.phone or '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+            <div class="md:col-span-2">
+                <label for="url" class="block text-sm font-medium text-slate-700">URL (Job Posting)</label>
+                <input type="url" id="url" name="url" placeholder="https://example.com/job/123" value="{{ application.url or '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+             <div>
+                <label for="interview_date" class="block text-sm font-medium text-slate-700">Interview Date</label>
+                <input type="date" id="interview_date" name="interview_date" value="{{ application.interview_date.strftime('%Y-%m-%d') if application.interview_date else '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="salary" class="block text-sm font-medium text-slate-700">Salary</label>
+                <input type="number" step="0.01" id="salary" name="salary" placeholder="75000.00" value="{{ application.salary if application.salary is not none else '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="bonus" class="block text-sm font-medium text-slate-700">Bonus (e.g., 10 for 10%)</label>
+                <input type="text" id="bonus" name="bonus" placeholder="10" value="{{ (application.bonus * 100) if application.bonus is not none else '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="pto" class="block text-sm font-medium text-slate-700">PTO</label>
+                <input type="text" id="pto" name="pto" placeholder="15 days / 3 weeks" value="{{ application.pto or '' }}"
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+            <div class="flex items-center">
+                <input id="cover_letter" name="cover_letter" type="checkbox" value="True" {% if application.cover_letter %}checked{% endif %}
+                       class="h-4 w-4 text-sky-600 border-slate-300 rounded focus:ring-sky-500">
+                <label for="cover_letter" class="ml-2 block text-sm text-slate-900">Cover Letter Sent?</label>
+            </div>
+            <div class="flex items-center">
+                <input id="offer" name="offer" type="checkbox" value="True" {% if application.offer %}checked{% endif %}
+                       class="h-4 w-4 text-sky-600 border-slate-300 rounded focus:ring-sky-500">
+                <label for="offer" class="ml-2 block text-sm text-slate-900">Offer Received?</label>
+            </div>
+            <div class="flex items-center">
+                <input id="equity" name="equity" type="checkbox" value="True" {% if application.equity %}checked{% endif %}
+                       class="h-4 w-4 text-sky-600 border-slate-300 rounded focus:ring-sky-500">
+                <label for="equity" class="ml-2 block text-sm text-slate-900">Equity Offered?</label>
+            </div>
+            <div class="flex items-center">
+                <input id="health_coverage" name="health_coverage" type="checkbox" value="True" {% if application.health_coverage %}checked{% endif %}
+                       class="h-4 w-4 text-sky-600 border-slate-300 rounded focus:ring-sky-500">
+                <label for="health_coverage" class="ml-2 block text-sm text-slate-900">Health Coverage?</label>
+            </div>
+        </div>
+        
+        <button type="submit"
+                class="mt-6 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors">
+            Save Changes
+        </button>
+    </form>
+</div>
+{% endblock %} 

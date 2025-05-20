@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}{{ application.company_name }} - {{ application.role }}{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+    <div class="flex justify-between items-start mb-4">
+        <div>
+            <h1 class="text-3xl font-semibold text-sky-700">{{ application.company_name }}</h1>
+            <h2 class="text-xl text-sky-600">{{ application.role }}</h2>
+        </div>
+        <div class="flex space-x-2">
+            <a href="{{ url_for('edit_application_form', application_id=application.id) }}"
+               class="text-sm py-2 px-4 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition-colors">
+                Edit Application
+            </a>
+            <a href="{{ url_for('read_root') }}" 
+               class="text-sky-600 hover:text-sky-700 transition-colors py-2 px-3 border border-sky-600 rounded-md hover:bg-sky-50 text-sm">
+               &larr; Back to List
+            </a>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm text-slate-700">
+        <p><strong>Application Date:</strong> {{ application.application_date.strftime('%Y-%m-%d') if application.application_date else 'N/A' }}</p>
+        <p><strong>Status:</strong> <span class="font-medium">{{ application.status if application.status else 'N/A' }}</span></p>
+        <p><strong>Contact Person:</strong> {{ application.contact_person if application.contact_person else 'N/A' }}</p>
+        <p><strong>Phone:</strong> {{ application.phone if application.phone else 'N/A' }}</p>
+        <p><strong>URL:</strong> 
+            {% if application.url %}
+                <a href="{{ application.url }}" target="_blank" class="text-sky-600 hover:underline">{{ application.url }}</a>
+            {% else %}
+                N/A
+            {% endif %}
+        </p>
+        <p><strong>Cover Letter Sent:</strong> {{ 'Yes' if application.cover_letter else 'No' }}</p>
+        <p><strong>Interview Date:</strong> {{ application.interview_date.strftime('%Y-%m-%d') if application.interview_date else 'N/A' }}</p>
+        <p><strong>Offer Received:</strong> {{ 'Yes' if application.offer else 'No' }}</p>
+        <p><strong>Salary:</strong> 
+            {% if application.salary is not none %}
+                ${{ "{:,}".format(application.salary) }}
+            {% else %}
+                N/A
+            {% endif %}
+        </p>
+        <p><strong>Equity:</strong> {{ 'Yes' if application.equity else 'No' }}</p>
+        <p><strong>Bonus:</strong> 
+            {% if application.bonus is not none %}
+                {{ "{:.0%}".format(application.bonus) }}
+            {% else %}
+                N/A
+            {% endif %}
+        </p>
+        <p><strong>Health Coverage:</strong> {{ 'Yes' if application.health_coverage else 'No' }}</p>
+        <p><strong>PTO:</strong> {{ application.pto if application.pto else 'N/A' }}</p>
+    </div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-6">
+    <h3 class="text-2xl font-semibold text-sky-700 mb-4">Notes</h3>
+    <div class="mb-6">
+        <form action="{{ url_for('create_new_note_for_application', application_id=application.id) }}" method="post" class="space-y-3">
+            <div>
+                <label for="content" class="block text-sm font-medium text-slate-700">Add a new note:</label>
+                <textarea id="content" name="content" rows="3" required
+                          class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"></textarea>
+            </div>
+            <button type="submit"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors">
+                Add Note
+            </button>
+        </form>
+    </div>
+
+    {% if application.notes %}
+        <ul class="space-y-3">
+            {% for note in application.notes %}
+            <li class="p-3 bg-slate-50 border border-slate-200 rounded-md">
+                <p class="text-slate-800">{{ note.content }}</p>
+                <!-- You could add a timestamp here if you add it to the Note model/schema -->
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-slate-600">No notes for this application yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %} 
