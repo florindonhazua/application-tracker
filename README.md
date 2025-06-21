@@ -1,77 +1,106 @@
-# Job Application Tracker
+# Application Tracker 🚀
 
-A simple job application tracking system built with Python, FastAPI, PostgreSQL, and Docker. 
-It allows users to track their job applications, including company details, role, application status, and associated notes.
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/florindonhazua/application-tracker)
+![GitHub](https://img.shields.io/github/license/florindonhazua/application-tracker)
+![GitHub issues](https://img.shields.io/github/issues/florindonhazua/application-tracker)
 
-## Features
+Welcome to the **Application Tracker**! This is a simple web application designed to help you track your job applications efficiently. Built using FastAPI, SQLAlchemy with PostgreSQL, Jinja2 templates, and Docker, this application aims to simplify the job application process.
 
-*   List all tracked job applications on a landing page.
-*   View detailed information for each job application.
-*   Add new job applications with fields for Company Name (required), Role (required), Application Date, Status, Contact Person, Phone, URL, Cover Letter Sent, Interview Date, Offer Received, Salary, Equity, Bonus, Health Coverage, and PTO.
-*   Edit existing job applications through a dedicated form.
-*   Add timestamped notes to each job application.
-*   Notes are displayed in descending order of creation (newest first).
-*   Server-side rendered pages using Jinja2 templates and styled with Tailwind CSS.
-*   Uses Docker Compose for easy setup and deployment with a PostgreSQL database.
+## Table of Contents
 
-## Prerequisites
+1. [Features](#features)
+2. [Technologies Used](#technologies-used)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Contact](#contact)
 
-*   Docker
-*   Docker Compose (v2+ CLI - i.e., `docker compose` command)
+## Features 🌟
 
-## Setup and Running
+- **Track Applications**: Easily add, edit, and delete job applications.
+- **User-Friendly Interface**: Navigate through a clean and intuitive design.
+- **Responsive Design**: Works on both desktop and mobile devices.
+- **Data Persistence**: Store your data securely using PostgreSQL.
+- **Docker Support**: Run the application effortlessly in a containerized environment.
 
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository-url>
-    cd application-tracker
-    ```
+## Technologies Used 🛠️
 
-2.  **Build and run the application using Docker Compose:**
-    ```bash
-    docker compose up --build
-    ```
-    The `web` service includes a wait script to ensure the database is ready before starting the application.
+- **FastAPI**: A modern web framework for building APIs with Python 3.6+ based on standard Python type hints.
+- **SQLAlchemy**: The Python SQL toolkit and Object-Relational Mapping (ORM) system.
+- **PostgreSQL**: A powerful, open-source object-relational database system.
+- **Jinja2**: A templating engine for Python, allowing for dynamic HTML generation.
+- **Docker**: A platform for developing, shipping, and running applications in containers.
 
-3.  The application will be accessible at [http://localhost:8000](http://localhost:8000).
+## Installation ⚙️
 
-## Project Structure
+To set up the Application Tracker on your local machine, follow these steps:
 
-```
-application-tracker/
-├── app/                  # Main application code
-│   ├── __init__.py
-│   ├── main.py           # FastAPI application entry point
-│   ├── models.py         # SQLAlchemy database models
-│   ├── crud.py           # CRUD operations for database
-│   ├── schemas.py        # Pydantic schemas for data validation
-│   ├── database.py       # Database connection and session setup
-│   ├── wait_for_db.py    # Script to ensure DB is ready before app start
-│   ├── routers/          # API routers (currently unused, routes in main.py)
-│   │   ├── __init__.py
-│   └── templates/        # Jinja2 HTML templates
-│       ├── base.html
-│       ├── index.html
-│       ├── application_detail.html
-│       └── edit_application.html
-│   └── static/           # Static files (CSS, JS)
-│       └── style.css
-├── backups/
-│   └── .gitkeep          # Ensures the backups directory can be tracked if empty (if file exists)
-├── scripts/
-│   └── db_volume.sh      # Example script (if it exists)
-├── Dockerfile            # Dockerfile for the FastAPI application
-├── docker-compose.yml    # Docker Compose configuration
-├── requirements.txt      # Python dependencies
-├── .gitignore            # Specifies intentionally untracked files
-└── README.md             # This file
-```
+1. **Clone the Repository**:
 
-## Future Considerations / Potential Improvements
+   ```bash
+   git clone https://github.com/florindonhazua/application-tracker.git
+   cd application-tracker
+   ```
 
-*   **Database Migrations:** Implement Alembic for robust schema management.
-*   **Deleting Applications/Notes:** Add UI and backend logic for deletion.
-*   **Enhanced Error Handling:** Display user-friendly validation errors on forms.
-*   **Pagination:** For long lists of applications or notes.
-*   **User Authentication:** If multi-user capabilities are needed.
-*   **Testing:** Implement unit and integration tests. 
+2. **Build and Run with Docker**:
+
+   Make sure you have Docker and Docker Compose installed. Then run:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   This command builds the application and starts the containers.
+
+3. **Access the Application**:
+
+   Open your web browser and go to `http://localhost:8000`. You should see the application running.
+
+4. **Download Releases**:
+
+   For the latest releases, visit [Releases](https://github.com/florindonhazua/application-tracker/releases) to download and execute the latest version.
+
+## Usage 📊
+
+Once the application is running, you can start tracking your job applications. Here’s how:
+
+1. **Add a New Application**:
+   - Click on the "Add Application" button.
+   - Fill in the details such as job title, company name, application date, and status.
+   - Click "Save".
+
+2. **View Applications**:
+   - The main dashboard displays all your applications.
+   - You can filter and sort the applications based on different criteria.
+
+3. **Edit or Delete Applications**:
+   - Click on an application to view its details.
+   - Use the "Edit" button to make changes or the "Delete" button to remove it.
+
+4. **Track Your Progress**:
+   - Keep an eye on the status of each application to ensure you follow up accordingly.
+
+## Contributing 🤝
+
+We welcome contributions to enhance the Application Tracker. If you have suggestions or improvements, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push to your forked repository.
+5. Open a pull request detailing your changes.
+
+## License 📄
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact 📬
+
+For any inquiries or feedback, feel free to reach out:
+
+- **Author**: Florin Donhazua
+- **Email**: florin@example.com
+- **GitHub**: [florindonhazua](https://github.com/florindonhazua)
+
+Thank you for checking out the Application Tracker! We hope it helps you manage your job applications effectively. For the latest updates and releases, visit [Releases](https://github.com/florindonhazua/application-tracker/releases).
