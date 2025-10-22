@@ -1,15 +1,15 @@
 # Application Tracker 🚀
 
-Developer: florindonhazua ([florindonhazua](https://www.github.com/florindonhazua))
-
+## Developer: florindonhazua ([florindonhazua](https://www.github.com/florindonhazua))
 
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/t/florindonhazua/application-tracker)](https://github.com/florindonhazua/application-tracker/commits/main)  
 [![GitHub last commit](https://img.shields.io/github/last-commit/florindonhazua/application-tracker)](https://github.com/florindonhazua/application-tracker/commits/main)  
-[![GitHub repo size](https://img.shields.io/github/repo-size/florindonhazua/application-tracker)](https://github.com/florindonhazua/application-tracker)
-[![badge](https://img.shields.io/badge/deployment-Live-green)]
+[![GitHub repo size](https://img.shields.io/github/repo-size/florindonhazua/application-tracker)](https://github.com/florindonhazua/application-tracker)  
+[![Deployment](https://img.shields.io/badge/deployment-Live-green)](https://github.com/florindonhazua/application-tracker)  
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/florindonhazua/application-tracker)  
 ![GitHub license](https://img.shields.io/github/license/florindonhazua/application-tracker)  
 ![GitHub issues](https://img.shields.io/github/issues/florindonhazua/application-tracker)
+
 
 
 Welcome to the **Application Tracker**! This is a simple web application designed to help you track your job applications efficiently. Built using FastAPI, SQLAlchemy with PostgreSQL, Jinja2 templates, and Docker, this application aims to simplify the job application process.
