@@ -1,6 +1,6 @@
 # Application Tracker 🚀
 
-## Developer: florindonhazua ([florindonhazua](https://www.github.com/florindonhazua))
+Developer: florindonhazua ([florindonhazua](https://www.github.com/florindonhazua))
 
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/t/florindonhazua/application-tracker)](https://github.com/florindonhazua/application-tracker/commits/main)  
 [![GitHub last commit](https://img.shields.io/github/last-commit/florindonhazua/application-tracker)](https://github.com/florindonhazua/application-tracker/commits/main)  
