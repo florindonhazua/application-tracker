@@ -76,8 +76,12 @@
         <ul class="space-y-3">
             {% for note in application.notes %}
             <li class="p-3 bg-slate-50 border border-slate-200 rounded-md">
-                <p class="text-slate-800">{{ note.content }}</p>
-                <!-- You could add a timestamp here if you add it to the Note model/schema -->
+                   <div class="flex justify-between">
+                      <p class="text-slate-800">{{ note.content }}</p>
+                      <span class="text-xs text-slate-500">
+                        {{ note.created_at.strftime('%Y-%m-%d %H:%M') }}
+                      </span>
+                </div>
             </li>
             {% endfor %}
         </ul>
