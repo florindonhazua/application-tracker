@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Date, Boolean, ForeignKey, Numeric, Float, Text
 from sqlalchemy.orm import relationship
 from .database import Base
+from datetime import datetime
 
 class JobApplication(Base):
     __tablename__ = "job_applications"
@@ -30,5 +31,6 @@ class Note(Base):
     id = Column(Integer, primary_key=True, index=True)
     content = Column(Text, nullable=False)
     application_id = Column(Integer, ForeignKey("job_applications.id"))
+    created_at = Column(DateTime, default=datetime.utcnow)
 
     application = relationship("JobApplication", back_populates="notes") 
